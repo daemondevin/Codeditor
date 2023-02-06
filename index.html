@@ -1,0 +1,912 @@
+<template type="text/javascript" id="HumanObject.js">
+/* jshint esversion: 8 */
+const human = {
+/**
+ * Executes the asynchronous (you only get one [at a time?]),
+ * but highly mutable (did I mean miserable?) existence of a
+ * human's prototype and awaits the Promise that is death.
+ *
+ * @param {boolean}  life  Where there is life, there is death
+ * @param {integer}  age   Alias for your life's setTimeout()
+ * @param {boolean}  dead  Death is one of life's const
+ */
+"alive": async function (life, age, dead = false) {
+    if (life) {
+        let dying = false;
+        while (!dead) {
+            let upkeep = await eat();
+            let reboot = await sleep();
+            let career = await code();
+
+            // Oxymoronic condition
+            if ((parseInt(career) !== Number.isNaN(upkeep)) && !reboot) {
+                console.log("You're born to die!");
+                continue;
+            } else {
+                dying = true;
+            }
+
+            if (dying) {
+                setTimeout(function() {
+                    console.warn("Unexpected end of execution!");
+                    break;
+                }, age);
+            }
+        }
+    } else {
+        throw new Error("Unexpected end of script!");
+    }
+},
+/**
+ * Death is just the end of biological IIFE
+ */
+"dead": void function () {
+    return new Promise(resolve => {
+        return resolve(eval(null));
+    });
+}
+};
+</template>
+
+<template type="text/css" id="style.css">
+*:root {
+font-size: 16px;
+}
+
+* {
+transition: all 500ms ease-in;
+}
+
+body {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+body:before, body:after {
+box-sizing: border-box;
+}
+
+section {
+background: #ddd;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 0.7rem;
+height: 100vh;
+width: 100vw;
+border: 2px solid red;
+}
+section .container {
+float: left;
+border: 1px solid #000;
+}
+section .container .human {
+background: #16365c;
+width: 19em;
+height: 31em;
+position: relative;
+border: 2px solid green;
+display: flex;
+justify-content: center;
+}
+
+.cheveux:nth-child(1) {
+width: 7.1em;
+height: 4em;
+transform: translateY(2em);
+border-radius: 0.5em;
+background: #de4c0e;
+}
+.cheveux:nth-child(2) {
+width: 4em;
+height: 2.4em;
+position: absolute;
+top: 1em;
+transform: translateX(1.5em);
+border-radius: 0 1em 0 1em;
+background: #de4c0e;
+z-index: 11;
+}
+.cheveux:nth-child(3) {
+width: 6em;
+height: 3.4em;
+position: absolute;
+transform: translateX(-0.1em);
+border-radius: 0 2em 0 2em;
+background: #fe802b;
+z-index: 10;
+}
+.cheveux:nth-child(4) {
+width: 3em;
+height: 2.5em;
+position: absolute;
+top: 0.7em;
+transform: translateX(-3em);
+border-radius: 0 2em;
+background: #c32a03;
+z-index: 9;
+}
+
+.visage {
+width: 6em;
+height: 7.7em;
+padding: 0.8em;
+position: absolute;
+top: 3.5em;
+border-radius: 0 0 3em 3em;
+box-sizing: border-box;
+z-index: 9999;
+box-shadow: 0 1.5em 0 -0.7em rgba(0, 0, 0, 0.1), 0 3em 0 -0.5em #f2b191;
+background: #fccdab;
+}
+.visage .longmay {
+width: 1.6em;
+height: 0.4em;
+background: #de4c0e;
+border-radius: 1em;
+box-shadow: 0.1em 0.2em 0 0 rgba(0, 0, 0, 0.2), 2.5em 0em 0 0 #de4c0e, 2.6em 0.2em 0 0 rgba(0, 0, 0, 0.2);
+}
+.visage .yeux {
+opacity: 1;
+width: 0.6em;
+height: 1.3em;
+background: #183a65;
+margin: 0.8em 0.65em;
+border-radius: 1em;
+box-shadow: 0 0 0 0.25em white, 2.5em 0 0 0 #183a65, 2.5em 0 0 0.25em white;
+}
+.visage .mouth {
+padding: 1em 2em;
+background: #183a65;
+border-radius: 0 0 5em 5em;
+position: relative;
+overflow: hidden;
+}
+.visage .mouth .rang {
+padding: 0.3em 1.8em;
+position: absolute;
+top: 0;
+left: 0;
+background: white;
+border-radius: 0 0 0.5em 0;
+}
+.visage .mouth:before {
+content: "";
+display: block;
+clear: 0;
+padding: 1.5em;
+background: #eb1b68;
+border-radius: 100%;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+margin-top: 1.5em;
+}
+
+.oreille {
+padding: 0.5em 4em;
+background: #fccdab;
+position: absolute;
+top: 6em;
+border-radius: 0.5em;
+z-index: 5;
+}
+
+.cothe {
+width: 9em;
+height: 14.9em;
+background: #0771dd;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+margin-top: 1.3em;
+border-radius: 5em;
+overflow: hidden;
+z-index: 12;
+}
+.cothe .tui {
+padding: 0.8em;
+border: 0.1em solid #000;
+position: absolute;
+overflow: hidden;
+}
+.cothe .tui:before {
+display: block;
+clear: both;
+content: "";
+width: 100%;
+height: 100%;
+border: 0.1em solid #000;
+transform: rotate(45deg);
+position: absolute;
+top: 0;
+left: 0;
+margin-top: -1.2em;
+}
+.cothe .tui:after {
+content: "";
+display: block;
+clear: both;
+padding: 0.3em;
+position: absolute;
+background: #41b3fc;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+border-radius: 100%;
+}
+.cothe .tui:nth-child(1) {
+top: 5.5em;
+left: 0.9em;
+}
+.cothe .tui:nth-child(2) {
+top: 5.6em;
+left: 6.3em;
+}
+.cothe .quan {
+width: 100%;
+height: 100%;
+background: #490689;
+position: absolute;
+margin-top: 8.6em;
+}
+.cothe .quan .thanglung {
+padding: 0.5em;
+background: #2c0559;
+position: relative;
+}
+.cothe .quan .thanglung:before {
+content: "";
+display: block;
+clear: both;
+padding: 0.5em;
+background: #f0d319;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+.vai {
+width: 14.5em;
+height: 3em;
+background: #0261b1;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+margin-top: -3em;
+border-radius: 2em 2em 0 0;
+z-index: 11;
+}
+
+.tay {
+width: 13.5em;
+height: 6em;
+background: #fccdab;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+margin-top: 1em;
+z-index: 0;
+}
+
+.mains {
+padding: 2.3em;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+border-radius: 100%;
+margin: 4.5em 5.7em;
+box-shadow: -11.5em 0 0 0 #fccdab;
+background: #fccdab;
+}
+
+.jamb {
+width: 7em;
+height: 7em;
+border-bottom-style: solid;
+border-width: 0.5em;
+background: #490689;
+position: absolute;
+bottom: 2em;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+}
+.jamb:before {
+content: "";
+display: block;
+clear: both;
+padding: 5em;
+border: 0.5em solid #2c0559;
+position: absolute;
+bottom: 3.8em;
+border-radius: 100%;
+box-shadow: 0 0 1em 0 #2c0559;
+}
+.jamb:after {
+content: "";
+display: block;
+clear: both;
+width: 0.5em;
+height: 10em;
+background: #2c0559;
+}
+
+.pieds {
+position: absolute;
+bottom: 0.5em;
+width: 10.5em;
+height: 1.5em;
+background: #0472de;
+border-radius: 2em 2em 0 0;
+overflow: hidden;
+z-index: 10;
+}
+.pieds:before {
+content: "";
+display: block;
+clear: both;
+width: 0.5em;
+height: 4em;
+border: 1px solid #000;
+background: #2c0559;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+.dat {
+width: 15em;
+height: 0.5em;
+background: #ec3e88;
+position: absolute;
+bottom: 0.2em;
+border-radius: 2em;
+z-index: 0;
+}
+</template>
+<script type="text/tim" id="jsbOptToggle">
+<div class="item">    <div class="ui toggle" id="{{opt}}">
+  <label for="{{opt}}">
+    <span class="ui small text" data-tooltip="{{desc}}" data-inverted="" data-variation="mini">{{name}}</span>
+    <input type="checkbox" name="{{opt}}"{{checked}}/>
+    <span class="indicator"> </span>
+    <span class="led"></span>
+  </label>
+</div>
+</div>
+</script>
+<script type="text/tim" id="jsbOptSpinner">
+<div class="item">
+<div class="ui spinner" id="{{opt}}">
+  <label class="quantity" for="{{opt}}">
+    <span class="ui small text" data-tooltip="{{desc}}" data-inverted="" data-variation="mini">{{name}}</span>
+    <div class="decrement"></div>
+    <input type="number" name="{{opt}}" value="{{default}}" class="quantity-spinner" />
+    <div class="increment"></div>
+  </label>
+</div>
+</div>
+</script>
+<script type="text/tim" id="jsbOptStrInput">
+<div class="item">
+<div class="setting input">
+  <label for="{{opt}}">
+    <span class="ui small text" data-tooltip="{{desc}}" data-inverted="" data-variation="mini">{{name}}</span>
+    <input type="text" id="{{opt}}" name="{{opt}}" value="{{default}}" />
+ </label>
+</div>
+</div>
+</script>
+            <div class="ui large inverted basic long textdiff modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    Text Differances
+                </div>
+                <div class="content">
+                    <pre><code id="TextBin"></code></pre>
+                </div>
+            </div>
+<div id="Codeditor-Container">
+<header class="ui tiny borderless inverted top attached menu" id="titlebar">
+    <div class="header item">
+        <div id="topbaricon">
+            <img class="ui avatar middle aligned mini left floated circular inline bordered image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAl1JREFUOE+FU09IFHEU/r5Z12oVdSaFCsGkIls7FURQWBYEbtu/QxEEHkKMZrOsTqWUJJV2SVJZLIIiokLoUO0KEhp18BhURAa6u2F5SGcSEc125sWujoym9Lu99733fe/fj1jwQn6t1JNkk1CCLsgAcWN8Kqf9QTw+5U6hY5wvzdEsK6NehDogyxYSz9qfBEpdW//ICwdPE5wtUatF2ARAdQABBkk2wra3ggwBmBMD+NKm3Gz/YvSlnec25JXZinIVwB4AUyJomk5Ky91BcyyF12zStougmYIyV2XPWvuN4wxoWotYVmvX2NhAqEQNQmFsbaE37pv21ZLQSXZbkIYzPbFEzUbtJIGALXK/7avZlSJjQFMnBJikoG6bad4r2Fu0i7ZyB8Bml9pvIQ6GemLdC2fDCk39TmCNAKOWN7PosN/3HMA+V+AkhB0ey7p16l1i+B+CgKb+ALAawLekN9N/xO97LMAhZ+q07MrTbxPvl9hKugWHIJH0ZpbOr0DCem9cXyrZmcEMATEQHTXXh3cXXxSiGYAHwCO9N1b5P4JUX6sAjFNQHTHNp+HydTtsWJcJDuu9sSqHIKCqQQH8f4CO1+bMilMt/ASQ71KJQHApapofHd+B3NxiO0NpFMGJWd8gBPVR03zC/fl55WKzAZh3JBMgHtJGGOQxG6ITWOkS+UywIWIYnelLPAp4JlS1CkQ9gEJXYBJAxpxNpKq9nbUiq6VzaGgy3YJ7QBXZ2QWK11srxAUAy12YgOgQ4fUuwxha9De6ncH83C22pVwRYicFHxSPXHs18uvNYtv4C7Gh5hFCcPUAAAAAAElFTkSuQmCC" />
+    </div>
+        cod[e]ditor
+    </div>
+    <div class="file item">
+        <span class="ui text"><div id="filename">HumanObject.js</div></span> <div id="modified">
+            <div class="off" id="led"></div>
+        </div>
+    </div>
+    <div class="right mini icon menu">
+        <a class="minimize item" id="minimize" data-command="minimize">
+            <i class="minus icon"></i></a>
+        <a class="fullscreen item" id="fullscreen-icon" data-command="fullscreen">
+            <i class="clone outline icon"></i></a>
+        <a class="close item" id="close" data-command="close">
+            <i class="times icon"></i></a>
+    </div>
+</header>
+<nav class="ui tiny borderless inverted attached menu" id="mainmenu">
+    <div class="ui mini inverted dropdown item" id="file">
+        <div class="text">File</div>
+        <div class="file menu">
+            <a class="new item" id="new" data-command="new">
+                <span class="description"><abbr>ctrl + n</abbr></span>
+                <span class="text"><i class="file code icon"></i> New</span>
+            </a>
+            <a class="open item" id="open" data-command="open">
+                <span class="description">ctrl + o</span>
+                <span class="text"><i class="folder open icon"></i> Open...</span>
+            </a>
+            <a class="save item" id="save" data-command="save">
+                <span class="description">ctrl + s</span>
+                <span class="text"><i class="save icon"></i> Save...</span>
+            </a>
+            <a class="save as item" id="saveAs" data-command="saveAs">
+                <span class="description">ctrl + shift + s</span>
+                <span class="text"><i class="file export icon"></i> Save As...</span>
+            </a>
+            <div class="divider"></div>
+            <div class="item" id="recent">
+                <span class="text"><i class="dropdown icon"></i> Recent</span>
+                <div class="sublet menu">
+                    <a class="recent item" data-file="alive.js">alive.js</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="item" id="encoding">
+                <span class="text"><i class="dropdown icon"></i> Encoding</span>
+                <div class="sublet menu">
+                    <a class="item" id="ANSI">ANSI</a>
+                    <a class="item" id="Unicode">Unicode</a>
+                    <a class="item" id="UBE">Unicode Big Endian</a>
+                    <a class="item" id="UTF-8">UTF-8</a>
+                    <a class="item">More...</a>
+                    <a class="divider"></a>
+                    <a class="item disabled" id="Recode">Recode</a>
+                    <a class="divider"></a>
+                    <a class="item">Default...</a>
+                </div>
+            </div>
+            <div class="item" id="line-endings">
+                <span class="text"><i class="dropdown icon"></i> Line Endings</span>
+                <div class="sublet menu">
+                    <a class="item">Windows</a>
+                    <a class="item">Unix</a>
+                    <a class="item">Mac</a>
+                    <div class="divider"></div>
+                    <a class="item">Default...</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <a class="item" id="download">Download As...</a>
+            <div class="item" id="publish">
+                <i class="dropdown icon"></i> Publish To Web
+                <div class="sublet menu">
+                    <a class="item">Google Docs</a>
+                    <a class="item">Google Drive</a>
+                    <a class="item">Dropbox</a>
+                    <a class="item">Adobe Creative Cloud</a>
+                    <a class="item">Private FTP</a>
+                    <a class="item">Another Service...</a>
+                </div>
+            </div>
+            <a class="item" id="docClose">Close</a>
+        </div>
+    </div>
+    <div class="ui mini inverted dropdown item" id="edit">
+        <div class="text">Edit</div>
+        <div class="edit menu">
+            <a class="item undo" id="undo" data-command="undo">
+                <span class="description">ctrl + z</span>
+                <span class="text"><i class="undo icon"></i> Undo</span>
+            </a>
+            <a class="disabled item redo" id="redo" data-command="redo">
+                <span class="description">ctrl + y</span>
+                <span class="text"><i class="redo icon"></i> Redo</span>
+            </a>
+            <div class="divider"></div>
+            <a class="item cut" id="cut" data-command="cut">
+                <span class="description">ctrl + x</span>
+                <span class="text"><i class="cut icon"></i> Cut</span>
+            </a>
+            <a class="item copy" id="copy" data-command="copy">
+                <span class="description">ctrl + c</span>
+                <span class="text"><i class="copy icon"></i> Copy</span>
+            </a>
+            <a class="item paste" id="paste" data-command="paste">
+                <span class="description">ctrl + v</span>
+                <span class="text"><i class="paste icon"></i> Paste</span>
+            </a>
+            <a class="item clear" id="clear" data-command="clear">
+                <span class="description">del</span>
+                <span class="text"><i class="eraser icon"></i> Clear</span>
+            </a>
+            <a class="item select-all" id="select-all" data-command="selectAll">
+                <span class="description">ctrl + a</span>
+                <span class="text"><i class="mouse pointer icon"></i> Select All</span>
+            </a>
+            <div class="divider"></div>
+            <a class="item find" id="find" data-command="find">
+                <span class="description">ctrl + f</span>
+                <span class="text"><i class="search icon"></i> Find...</span>
+            </a>
+            <a class="item replace" id="replace" data-command="replace">
+                <span class="description">ctrl + h</span>
+                <span class="text"><i class="sync icon"></i> Replace...</span>
+            </a>
+        </div>
+    </div>
+    <div class="ui mini inverted dropdown item" id="view">
+        <div class="text">View</div>
+        <div class="view menu">
+            <div class="ui scrolling inverted dropdown item" id="theme">
+                <i class="dropdown icon"></i>
+                <span class="text">Syntax Highlighter</span>
+                <div id="themes" class="sublet menu"></div>
+            </div>
+            <div class="ui inverted dropdown item">
+                <i class="dropdown icon"></i>
+                <span class="text">Interface Theme</span>
+                <div id="scheme" class="sublet menu">
+                    <a class="item">Auto</a>
+                    <a class="item">Light</a>
+                    <a class="item">Dark</a>
+                    <a class="item">Dim</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="dropdown item" id="font">
+                <i class="dropdown icon"></i>
+                <span class="text"> Font</span>
+                <div id="fonts" class="sublet menu"></div>
+            </div>
+            <div class="dropdown item" id="fontsize">
+                <i class="dropdown icon"></i>
+                <span class="text"> Font Size</span>
+                <div id="fontsizes" class="sublet menu"></div>
+            </div>
+            <div class="divider"></div>
+            <a class="item fullscreen" id="fullscreen" data-command="fullscreen">
+                <span class="description">ctrl + shift + f</span>
+                <span class="text"><i class="expand alternate icon"></i> Fullscreen</span>
+            </a>
+            <div class="divider"></div>
+            <a class="item lineWrapping" id="lineWrapping" data-lineWrapping="false" onclick="setOption('lineWrapping')">
+                <span class="text"> Word Wrap</span>
+            </a>
+            <div class="divider"></div>
+            <a class="item whitespace" id="whitespace" data-show-whitespace="false">
+                <span class="text"> Show Whitespace</span>
+            </a>
+            <a class="item line-ending" id="line-ending" data-line-endings="false">
+                <span class="text"> Show Line Endings</span>
+            </a>
+            <div class="divider"></div>
+            <a class="item highlight" id="highlight" data-highlight-line="true">
+                <span class="text"><i class="check icon"></i> Highlight Current Line</span>
+            </a>
+            <a class="item braces" id="matching_braces" data-matching-braces="true">
+                <span class="text"> Matching Braces</span>
+            </a>
+            <a class="item markers" id="gutter_markers" data-matching-braces="true">
+                <span class="text"> Lint Gutter Markers</span>
+            </a>
+        </div>
+    </div>
+    <div class="ui mini inverted dropdown item" id="settings">
+        <div class="text">Settings</div>
+        <div class="settings menu">
+            <div class="ui scrolling inverted dropdown item" id="language">
+                <i class="dropdown icon"></i>
+                <span class="text">Languages</span>
+                <div id="languages" class="sublet menu"></div>
+            </div>
+            <div class="divider"></div>
+            <a class="item tabs2sp" id="tabs2sp">
+                <span class="text"> Tabs as Spaces</span>
+            </a>
+            <div class="divider"></div>
+            <a class="item indent" id="indent">
+                <span class="text"> Auto Indent Text</span>
+            </a>
+            <a class="item closebrackets" id="closebrackets" data-closebrackets="true" onclick="setAddon('closebrackets', 'edit', 'autoCloseBrackets')">
+                <span class="text"> Auto Close Brackets</span>
+            </a>
+            <a class="item closetag" id="closetag" data-closetag="true" onclick="setAddon('closetag', 'edit', 'autoCloseTags', true)">
+                <span class="text"> Auto Close Tags</span>
+            </a>
+            <div class="divider"></div>
+            <a class="item toolbar" id="toggle-toolbar">
+                <span class="text"> Show Toolbar</span>
+            </a>
+            <a class="item statusbar" id="toogle-statusbar">
+                <span class="text"> Show Statusbar</span>
+            </a>
+            <div class="divider"></div>
+            <a class="item settings" id="export-settings">
+                <span class="description">f7</span>
+                <span class="text"> Export Settings...</span>
+            </a>
+            <a class="item reset settings" id="reset">
+                <span class="text"> Reset Settings...</span>
+            </a>
+        </div>
+    </div>
+    <div class="ui mini inverted dropdown item" id="help">
+        <div class="text">Help</div>
+        <div class="help menu">
+            <a class="support item" id="support">
+                <span class="description"></span>
+                <span class="text"> Codeditor Support</span>
+            </a>
+            <a class="join item" id="join">
+                <span class="description"></span>
+                <span class="text"> Get Involved</span>
+            </a>
+            <div class="divider"></div>
+            <a class="suggest item" id="suggest">
+                <span class="description"></span>
+                <span class="text"> Suggest A Feature</span>
+            </a>
+            <div class="divider"></div>
+            <a class="about developer item" id="about">
+                <span class="description">f1</span>
+                <span class="text"> About Codeditor</span>
+            </a>
+            <div class="ui tiny inverted basic top aligned developer modal">
+                <div class="ui fluid centered tiny image" id="identity">
+                    <img src="https://gaulsautoreg.com/wp-content/uploads/2022/02/logo.png" class="logo" alt="">
+                </div>
+                <div class="ui inverted fluid centered secondary card">
+                    <div class="center aligned content">
+                        <span id="help" class="header">
+                            ░▒█▀▀▄░▄▀▀▄░█▀▄░█▀▀░█▀▄░░▀░░▀█▀░▄▀▀▄░█▀▀▄
+                            ░▒█░░░░█░░█░█░█░█▀▀░█░█░░█▀░░█░░█░░█░█▄▄▀
+                            ░▒█▄▄▀░░▀▀░░▀▀░░▀▀▀░▀▀░░▀▀▀░░▀░░░▀▀░░▀░▀▀
+                        </span>
+                        <div class="meta">
+                            <span class="date">A Semantic-UI In-Browser <strike>IDE</strike> Code Editor</span>
+                        </div>
+                        <div class="left aligned description">Codeditor is still under heavy development. In fact, not to brag but Codeditor is the tool used in its own development. Imagine having a hand in your own inception. Quite the self-made story, right?<br /><br /> Many of the configuration options you see available have yet to be implemented. However, Codeditor is being developed as you view this modal prompt.</div>
+                    </div>
+                    <div class="center aligned extra content">
+                        <div class="ui small header">Other Creative Outlets</div>
+                        <a href="https://github.com/daemondevin" target="_blank"> <i class="big github icon"></i> </a>
+                        <a href="https://codepen.io/daemondevin" target="_blank"> <i class="big codepen icon"></i></a>
+                        <a href="https://www.deviantart.com/devin" target="_blank"> <i class="big deviantart icon"></i></a>
+                        <div class="hidden divider"></div><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<nav id="toolbar" class="ui attached inverted borderless compact mini icon menu">
+    <a class="new item" data-command="new" data-tooltip="New File" data-inverted="" data-position="bottom left" data-variation="mini"><i class="file icon"></i></a>
+    <a class="open item" data-command="open" data-tooltip="Open File" data-inverted="" data-position="bottom center" data-variation="mini"><i class="folder open icon"></i></a>
+    <a class="save item" data-command="save" data-tooltip="Save File" data-inverted="" data-position="bottom center" data-variation="mini"><i class="save icon"></i></a>
+    <div class="divider"></div>
+    <a class="find item" data-command="find" data-tooltip="Find" data-inverted="" data-position="bottom center" data-variation="mini"><i class="search icon"></i></a>
+    <a class="replace item" data-command="replace" data-tooltip="Replace" data-inverted="" data-position="bottom center" data-variation="mini"><i class="sync icon"></i></a>
+    <div class="divider"></div>
+    <a class="undo item" data-command="undo" data-tooltip="Undo" data-inverted="" data-position="bottom center" data-variation="mini"><i class="undo icon"></i></a>
+    <a class="disabled redo item" data-command="redo" data-tooltip="Redo" data-inverted="" data-position="bottom center" data-variation="mini"><i class="redo icon"></i></a>
+    <div class="divider"></div>
+    <a class="cut item" data-command="cut" data-tooltip="Cut" data-inverted="" data-position="bottom center" data-variation="mini"><i class="cut icon"></i></a>
+    <a class="copy item" data-command="copy" data-tooltip="Copy" data-inverted="" data-position="bottom center" data-variation="mini"><i class="copy icon"></i></a>
+    <a class="paste item" data-command="paste" data-tooltip="Paste" data-inverted="" data-position="bottom center" data-variation="mini"><i class="paste icon"></i></a>
+    <div class="divider"></div>
+    <a class="format item" data-command="format" data-tooltip="Format Code" data-inverted="" data-position="bottom center" data-variation="mini"><i class="align left icon"></i></a>
+    <a class="format settings item" data-command="formatSettings" data-tooltip="Format Settings" data-inverted="" data-position="bottom center" data-variation="mini"><i class="cog icon"></i></a>
+    <div class="divider"></div>
+    <a class="files item" data-command="files" data-tooltip="Open File Explorer" data-inverted="" data-position="bottom center" data-variation="mini"><i class="folder icon"></i></a>
+    <div class="divider"></div>
+    <a class="console item" data-command="console" data-tooltip="Open Shell Window" data-inverted="" data-position="bottom center" data-variation="mini"><i class="terminal icon"></i></a>
+    <a class="debug item" data-command="debug" data-tooltip="Open Debug Window" data-inverted="" data-position="bottom center" data-variation="mini"><i class="bug icon"></i></a>
+</nav>
+<div class="ui bottom attached pushable input" id="textarea">
+    <nav class="ui inverted left pointing vertical sidebar menu" id="explorer">
+
+        <div class="item">
+            File Explorer
+        </div>
+        
+        <div class="ui inverted vertical fluid styled accordion item">
+            
+            <div class="title item"> 
+                <i class="folder icon"></i>
+                &nbsp;&nbsp;assets
+            </div>
+            
+            <div class="content item">
+                
+                <div class="accordion">
+                    
+                    <div class="title item"> 
+                        <i class="folder icon"></i>
+                        &nbsp;&nbsp;css
+                    </div>
+                    
+                    <div class="content menu item">
+                        <div class="link item first" data-file="style.css">style.css</div>
+                    </div>
+                    
+                </div>
+                <div class="accordion">
+                    
+                    <div class="title item"> 
+                        <i class="folder icon"></i>
+                        &nbsp;&nbsp;js
+                    </div>
+                    
+                    <div class="content menu item">
+                        <div class="link item first" data-file="script.js">script.js</div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="ui inverted vertical fluid styled accordion item">
+            <div class="title item">
+                <i class="folder icon"></i>
+                &nbsp;&nbsp;components
+            </div>
+            <div class="content menu item">
+                
+            </div>
+        </div>
+        <div class="active link item" data-file="HumanObject.js">
+                &nbsp;&nbsp;&nbsp;&nbsp;HumanObject.js</div>
+    </nav>
+    <nav class="ui inverted left pointing vertical sidebar menu" id="format">
+
+        <div class="item">
+            Format Settings <span class="ui small info text">🔅 Coming Soon</span>
+        </div>
+<div class="ui tiny secondary pointing top attached tabular menu" id="FormatTab">
+<div class="item active" data-tab="js">JavaScript</div>
+<div class="center item" data-tab="css">CSS</div>
+<div class="item" data-tab="html">HTML</div>
+</div>
+<div class="ui inverted bottom attached tab basic js format settings segment active" data-tab="js">
+<h6 class="ui horizontal right aligned inverted divider header">
+  JavaScript Settings <i class="js square icon"></i>
+</h6>
+<form>
+  <div class="ui inverted fitted right aligned js boolean settings"></div>
+  <div class="ui inverted fitted right aligned js integer settings"></div>
+  <div class="ui inverted fitted right aligned js string settings"></div>
+  <div class="ui inverted fitted right aligned js select settings"></div>
+</form>
+</div>
+<div class="ui inverted bottom attached tab basic css format settings segment" data-tab="css">
+<h6 class="ui horizontal right aligned inverted divider header">
+CSS Settings <i class="css3 alternate icon"></i>
+</h6>
+<form>
+<div class="ui inverted fitted right aligned css boolean settings"></div>
+<div class="ui inverted fitted right aligned css integer settings"></div>
+<div class="ui inverted fitted right aligned css string settings"></div>
+<div class="ui inverted fitted right aligned css select settings"></div>
+</form>
+</div>
+<div class="ui inverted bottom attached tab basic html format settings segment" data-tab="html">
+<h6 class="ui horizontal right aligned inverted divider header">
+HTML Settings <i class="html5 icon"></i>
+</h6>
+<form>
+<div class="ui inverted fitted right aligned html boolean settings"></div>
+<div class="ui inverted fitted right aligned html integer settings"></div>
+<div class="ui inverted fitted right aligned html string settings"></div>
+<div class="ui inverted fitted right aligned html select settings"></div>
+</form>
+</div>
+    </nav>
+    <terminal class="ui inverted very wide bottom sidebar" id="console">
+            <div class="window">
+            <div class="ui tiny borderless inverted top attached menu">
+            <div class="header item">
+        <div id="topbaricon">
+            <img class="ui avatar middle aligned mini left floated circular inline bordered image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAl1JREFUOE+FU09IFHEU/r5Z12oVdSaFCsGkIls7FURQWBYEbtu/QxEEHkKMZrOsTqWUJJV2SVJZLIIiokLoUO0KEhp18BhURAa6u2F5SGcSEc125sWujoym9Lu99733fe/fj1jwQn6t1JNkk1CCLsgAcWN8Kqf9QTw+5U6hY5wvzdEsK6NehDogyxYSz9qfBEpdW//ICwdPE5wtUatF2ARAdQABBkk2wra3ggwBmBMD+NKm3Gz/YvSlnec25JXZinIVwB4AUyJomk5Ky91BcyyF12zStougmYIyV2XPWvuN4wxoWotYVmvX2NhAqEQNQmFsbaE37pv21ZLQSXZbkIYzPbFEzUbtJIGALXK/7avZlSJjQFMnBJikoG6bad4r2Fu0i7ZyB8Bml9pvIQ6GemLdC2fDCk39TmCNAKOWN7PosN/3HMA+V+AkhB0ey7p16l1i+B+CgKb+ALAawLekN9N/xO97LMAhZ+q07MrTbxPvl9hKugWHIJH0ZpbOr0DCem9cXyrZmcEMATEQHTXXh3cXXxSiGYAHwCO9N1b5P4JUX6sAjFNQHTHNp+HydTtsWJcJDuu9sSqHIKCqQQH8f4CO1+bMilMt/ASQ71KJQHApapofHd+B3NxiO0NpFMGJWd8gBPVR03zC/fl55WKzAZh3JBMgHtJGGOQxG6ITWOkS+UywIWIYnelLPAp4JlS1CkQ9gEJXYBJAxpxNpKq9nbUiq6VzaGgy3YJ7QBXZ2QWK11srxAUAy12YgOgQ4fUuwxha9De6ncH83C22pVwRYicFHxSPXHs18uvNYtv4C7Gh5hFCcPUAAAAAAElFTkSuQmCC" />
+    </div>
+        cod[e]ditor Command Shell
+    </div>
+    <div class="right mini icon menu">
+        <a class="minimize item">
+            <i class="minus icon"></i></a>
+        <a class="fullscreen item" onclick="fullscreen('console')">
+            <i class="clone outline icon"></i></a>
+        <a class="close item">
+            <i class="times icon"></i></a>
+    </div>
+            </div>
+            <pre class="ui basic vertically fitted black inverted segment terminal"></pre>
+    </div>
+    </terminal>
+    <console class="ui inverted very wide bottom sidebar" id="debug">
+            <div class="window">
+            <div class="ui tiny borderless inverted top attached menu">
+            <div class="header item">
+        <div id="topbaricon">
+            <img class="ui avatar middle aligned mini left floated circular inline bordered image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAl1JREFUOE+FU09IFHEU/r5Z12oVdSaFCsGkIls7FURQWBYEbtu/QxEEHkKMZrOsTqWUJJV2SVJZLIIiokLoUO0KEhp18BhURAa6u2F5SGcSEc125sWujoym9Lu99733fe/fj1jwQn6t1JNkk1CCLsgAcWN8Kqf9QTw+5U6hY5wvzdEsK6NehDogyxYSz9qfBEpdW//ICwdPE5wtUatF2ARAdQABBkk2wra3ggwBmBMD+NKm3Gz/YvSlnec25JXZinIVwB4AUyJomk5Ky91BcyyF12zStougmYIyV2XPWvuN4wxoWotYVmvX2NhAqEQNQmFsbaE37pv21ZLQSXZbkIYzPbFEzUbtJIGALXK/7avZlSJjQFMnBJikoG6bad4r2Fu0i7ZyB8Bml9pvIQ6GemLdC2fDCk39TmCNAKOWN7PosN/3HMA+V+AkhB0ey7p16l1i+B+CgKb+ALAawLekN9N/xO97LMAhZ+q07MrTbxPvl9hKugWHIJH0ZpbOr0DCem9cXyrZmcEMATEQHTXXh3cXXxSiGYAHwCO9N1b5P4JUX6sAjFNQHTHNp+HydTtsWJcJDuu9sSqHIKCqQQH8f4CO1+bMilMt/ASQ71KJQHApapofHd+B3NxiO0NpFMGJWd8gBPVR03zC/fl55WKzAZh3JBMgHtJGGOQxG6ITWOkS+UywIWIYnelLPAp4JlS1CkQ9gEJXYBJAxpxNpKq9nbUiq6VzaGgy3YJ7QBXZ2QWK11srxAUAy12YgOgQ4fUuwxha9De6ncH83C22pVwRYicFHxSPXHs18uvNYtv4C7Gh5hFCcPUAAAAAAElFTkSuQmCC" />
+    </div>
+        cod[e]ditor con[s]ole
+    </div>
+    <div class="right mini icon menu">
+        <a class="minimize item">
+            <i class="minus icon"></i></a>
+        <a class="fullscreen item" onclick="fullscreen('debug')">
+            <i class="clone outline icon"></i></a>
+        <a class="close item">
+            <i class="times icon"></i></a>
+    </div>
+            </div>
+                <pre class="ui basic vertically fitted black inverted segment debugger"><code id="debugger"></code></pre>
+    </div>
+    </console>
+    <div class="pusher">
+        <textarea id="codeditor">/* jshint esversion: 8 */
+const human = {
+/**
+ * Executes the asynchronous (you only get one [at a time?]),
+ * but highly mutable (did I mean miserable?) existence of a
+ * human's prototype and awaits the Promise that is death.
+ *
+ * @param {boolean}  life  Where there is life, there is death
+ * @param {integer}  age   Alias for your life's setTimeout()
+ * @param {boolean}  dead  Death is one of life's const
+ */
+"alive": async function (life, age, dead = false) {
+    if (life) {
+        let dying = false;
+        while (!dead) {
+            let upkeep = await eat();
+            let reboot = await sleep();
+            let career = await code();
+
+            // Oxymoronic condition
+            if ((parseInt(career) !== Number.isNaN(upkeep)) && !reboot) {
+                console.log("You're born to die!");
+                continue;
+            } else {
+                dying = true;
+            }
+
+            if (dying) {
+                setTimeout(function() {
+                    console.warn("Unexpected end of execution!");
+                    break;
+                }, age);
+            }
+        }
+    } else {
+        throw new Error("Unexpected end of script!");
+    }
+},
+/**
+ * Death is just the end of biological IIFE
+ */
+"dead": void function () {
+    return new Promise(resolve => {
+        return resolve(eval(null));
+    });
+}
+};
+</textarea>
+    </div>
+</div>
+</div>
+<div class="Codeditor-shortcut"></div>
